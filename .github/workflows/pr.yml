@@ -1,22 +1,22 @@
-name: PullRequest
+name: Pull request
 on: [pull_request]
 jobs:
-  PullRequest:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
       - name: Make envfile
-        uses: SpicyPizza/create-envfile@v1
+        uses: SpicyPizza/create-envfile@v1.3
         with:
-          envkey_POSTGRES_USER: 'postgres'
-          envkey_POSTGRES_PASSWORD: '123456'
-          envkey_POSTGRES_DB: 'driven_ops'
-          envkey_POSTGRES_HOST: 'postgres_db'
-          envkey_POSTGRES_PORT: '5432'
-          envkey_DATABASE_URL: 'postgresql://postgres:123456@postgres_db:5432/driven_ops'
-          file_name: .env.test
-      - name: Move envfile to backend
-        run: mv .env.test back-end/
+          envkey_POSTGRES_USER: ${{secrets.POSTGRES_USER}}
+          envkey_POSTGRES_PASSWORD: ${{secrets.POSTGRES_PASSWORD}}
+          envkey_POSTGRES_DB: ${{secrets.POSTGRES_DB}}
+          envkey_POSTGRES_HOST: ${{secrets.POSTGRES_HOST}}
+          envkey_POSTGRES_PORT: ${{secrets.POSTGRES_PORT}}
+          envkey_DATABASE_URL: ${{secrets.DATABASE_URL}}
+          directory: back-end/
+          file_name: .env
+          fail_on_empty: true
       - name: Run container and tests
         run: docker-compose -f docker-compose.ci.yml run node_app npm run test
