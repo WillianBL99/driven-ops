@@ -1,5 +1,7 @@
 FROM node:16
 
+RUN echo "\n\n** We are runing the front-end image **\n"
+
 WORKDIR /app
 
 COPY . .

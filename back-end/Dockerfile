@@ -1,5 +1,7 @@
 FROM node:16
 
+RUN echo "\n\n** We are runing the back-end image **\n"
+
 WORKDIR /usr/src
 
 COPY . .
