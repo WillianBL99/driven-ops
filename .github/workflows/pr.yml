@@ -16,5 +16,7 @@ jobs:
           envkey_POSTGRES_PORT: '5432'
           envkey_DATABASE_URL: 'postgresql://postgres:123456@postgres_db:5432/driven_ops'
           file_name: .env.test
+      - name: Move envfile to backend
+        run: mv .env.test back-end/
       - name: Run tests
-        run: mv .env.test back-end/ && docker-compose -f docker-compose.cd.yml run node_app
+        run: docker-compose -f docker-compose.ci.yml run node_app
