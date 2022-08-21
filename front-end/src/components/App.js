@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import dotenv from 'dotenv';
 const ENV = process.env.NODE_ENV;
-const envFile = ENV === 'development' ? '.env.development' : '.env.production';
-console.log({ nodeEnv: ENV, envFile });
-dotenv.config({ path: `.env${envFile}` });
+const envFile = ENV === 'development' ? '.env.development' : '.env';
+
+console.log({ Enverioment: ENV, envFile });
+dotenv.config({ path: `${envFile}` });
 
 function App() {
 	const [student, setStudent] = useState(null);
