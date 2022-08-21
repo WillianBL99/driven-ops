@@ -1,4 +1,4 @@
-nome: Pull request
+name: Pull request
 on: [pull_request]
 jobs:
   PullRequest:
