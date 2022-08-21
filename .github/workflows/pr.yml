@@ -18,5 +18,7 @@ jobs:
           file_name: .env.test
       - name: Move envfile to backend
         run: mv .env.test back-end/
-      - name: Run tests
+      - name: Run container
         run: docker-compose -f docker-compose.ci.yml run node_app
+      - name: Run tests
+        run: cd back-end && npm run test
