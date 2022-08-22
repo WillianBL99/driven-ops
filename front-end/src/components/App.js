@@ -25,7 +25,7 @@ function App() {
 		}
 	}, []);
 
-	return student ? <h1>{student.name}</h1> : 'Carregando...';
+	return student ? <h1>Nome: {student.name}</h1> : 'Carregando...';
 }
 
 export default App;
