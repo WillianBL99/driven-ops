@@ -36,7 +36,7 @@ jobs:
         run: docker-compose -f docker-compose.prod.yml build
 
       - name: Down containers and volumes
-        run: docker-compose -f docker-compose.prod.yml down -v
+        run: docker-compose -f docker-compose.prod.yml down
       - name: Up containers
         run: docker-compose -f docker-compose.prod.yml up -d
 
